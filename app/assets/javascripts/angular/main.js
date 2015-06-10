@@ -1,6 +1,6 @@
 app = {};
 
-app = angular.module('myAddressBook', [ 'ngRoute', 
+app = angular.module('MyAddressBook', [ 'ngRoute', 
                           'ngResource',
                           "ui.bootstrap",
                           "ui.bootstrap.tpls",

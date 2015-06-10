@@ -1,0 +1,26 @@
+<div>
+	<button type="button" class="btn btn-primary" ng-click="showAddContact()">Add Contact</button>
+	<table class="table table-striped">
+	  <thead>
+	  	<tr>
+	  		<th class="number">No.</th>
+	  		<th>Fullname</th>
+	  		<th>Address</th>
+	  		<th>Contact no.</th>
+	  		<th>Action</th>
+	  	</tr>
+	  </thead>
+	  <tbody>
+	  	<tr ng-show="no_data">
+	  		<td colspan="5" class="no-data">No contacts found.</td>
+	  	</tr>
+	  	<tr class="new_contact" ng-show="showAdd">
+	  		<td class="number"></td>
+	  		<td><input type="text" class="form-control" placeholder="Fullname" aria-describedby="basic-addon1" ng-model="new_data.fullname"></td>
+	  		<td><input type="text" class="form-control" placeholder="Address" aria-describedby="basic-addon1" ng-model="new_data.address"></td>
+	  		<td><input type="text" class="form-control" placeholder="Contact no" aria-describedby="basic-addon1" ng-model="new_data.contact_number"></td>
+	  		<td><i class="fa fa-floppy-o link" ng-click="addData()"></i> |<i class="fa fa-times link"></i></td>
+	  	</tr>
+	  </tbody>
+	</table>
+</div>

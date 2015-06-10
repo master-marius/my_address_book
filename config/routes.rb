@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   resources :signup
 
+  resources :contacts
+
+  resources :address_book
+
   # Example resource route with options:
   #   resources :products do
   #     member do

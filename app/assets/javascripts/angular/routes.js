@@ -3,9 +3,9 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider",
 
   $routeProvider.when( "/", 
   {
-      label: "Dashboard",
-      templateUrl : "assets/angular/views/dashboard/index.html",
-      controller : "dashboardController"
+      label: "My Contacts",
+      templateUrl : "assets/angular/views/address_book/index.html",
+      controller : "addressBookController"
   });
 
   $routeProvider.otherwise({ redirectTo : "/" });
