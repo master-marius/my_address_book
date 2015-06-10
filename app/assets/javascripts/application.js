@@ -14,10 +14,15 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
+//= require main
 //= require angular
 //= require angular-resource
 //= require angular-route
 //= require angular-ui-bootstrap-tpls
 //= require nprogress
 //= require nprogress-angular
+//= require ./angular/main
+//= require ./angular/routes
+//= require_tree ./angular/services
+//= require_tree ./angular/controllers
 //= require_tree .

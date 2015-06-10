@@ -16,6 +16,14 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
+  resources :users_session
+  get 'login' => 'users_session#new', :as => :login
+  get 'logout' => 'users_session#destroy', :as => :logout
+
+  resources :users
+
+  resources :signup
+
   # Example resource route with options:
   #   resources :products do
   #     member do

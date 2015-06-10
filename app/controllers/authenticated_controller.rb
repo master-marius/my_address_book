@@ -1,5 +1,5 @@
 class AuthenticatedController < ApplicationController
-  # before_filter :require_login
+  before_filter :require_login
 
   def is_login
     if !current_users.empty?

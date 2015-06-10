@@ -1,0 +1,86 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">Sign Up
+        <a href="<%= root_path%>"><i class="fa fa-times pull-right"> </i></a>
+        
+        </div>
+    </div>  
+    <div class="panel-body">
+        <%= form_tag signup_index_path, :method => :post, :class => "form-horizontal", :role => "form" do %>
+            
+            <div class="form-group">
+                <label for="firstname" class="col-md-3 control-label">First Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="user[firstname]" placeholder="First Name">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="user[lastname]" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-md-3 control-label">Middle Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="user[middlename]" placeholder="Middle Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-md-3 control-label">Username</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="user[username]" placeholder="Username">
+                     <% if !flash[:danger].nil? %>
+                        <% if !flash[:danger][:username].nil?%>
+                            <%= content_tag :div, flash[:danger][:username], class: "alert alert-danger" %>
+                        <% end%>
+                    <% end %>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-md-3 control-label">Email</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="user[email]" placeholder="Email Address">
+                     <% if !flash[:danger].nil? %>
+                        <% if !flash[:danger][:email].nil?%>
+                            <%= content_tag :div, flash[:danger][:email], class: "alert alert-danger" %>
+                        <% end%>
+                    <% end %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control" name="user[password]" placeholder="Password">
+                     <% if !flash[:danger].nil? %>
+                        <% if !flash[:danger][:password].nil?%>
+                            <%= content_tag :div, flash[:danger][:password], class: "alert alert-danger" %>
+                        <% end%>
+                    <% end %>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-md-3 control-label">Confirm Password</label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control" name="user[password_confirmation]" placeholder="Retype password">
+                   <% if !flash[:danger].nil? %>
+                        <% if !flash[:danger][:password_confirmation].nil?%>
+                            <%= content_tag :div, flash[:danger][:password_confirmation], class: "alert alert-danger" %>
+                        <% end%>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Button -->                                        
+                <div class="col-md-offset-3 col-md-9">
+                    <button id="btn-signup" type="submit" class="btn btn-primary pull-right"><i class="icon-hand-right"></i> &nbsp; Sign Up</button>  
+                </div>
+            </div>
+            
+            
+        <% end %>
+     </div>
+</div>

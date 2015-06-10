@@ -34,15 +34,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'mysql2'
+gem 'mysql2', '0.3.17'
 
-gem 'less-rails', '2.5.0'
+gem 'less-rails', '2.7.0'
 
 gem 'twitter-bootstrap-rails', '3.2.0'
 
-gem 'font-awesome-rails', '4.2.0.0'
+gem 'font-awesome-rails', '4.3.0.0'
 
-gem 'angularjs-rails', '~> 1.2.26'
+gem 'angularjs-rails', '~> 1.4.0'
 
 gem 'sorcery', '~> 0.8.6'
 
@@ -50,7 +50,7 @@ gem 'will_paginate', '3.0.7'
 
 gem 'pry', group: :development
 
-gem 'angular-ui-bootstrap-rails', '~> 0.11.2'
+gem 'angular-ui-bootstrap-rails', '~> 0.13.0'
 
 gem 'nprogress-rails', '~> 0.1.6.3'
 
@@ -66,4 +66,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
