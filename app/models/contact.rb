@@ -5,4 +5,6 @@ class Contact < ActiveRecord::Base
   validates :address, uniqueness:true
   validates :fullname, presence: true
   validates :address, presence:true
+
+  has_many :address_book
 end

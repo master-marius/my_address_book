@@ -4,7 +4,7 @@ app = angular.module('MyAddressBook', [ 'ngRoute',
                           'ngResource',
                           "ui.bootstrap",
                           "ui.bootstrap.tpls",
-                          "nprogress-rails",
+                          "nprogress-rails"
                   ]);
 
 app.run(["$rootScope", "$location", function($rootScope, $location) {

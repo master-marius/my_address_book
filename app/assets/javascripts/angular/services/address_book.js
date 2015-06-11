@@ -29,8 +29,8 @@ app.factory("addressBookServices", function($resource ,$http) {
   //   return $http.put("/users/"+id+".json", angular.extend({user: param}, Inventory.tokens.authenticityParams()));
   // };
 
-  // user.prototype.delete = function (id) {
-  //   return $http.delete("/users/"+id+".json", {params : Inventory.tokens.authenticityParams()})
-  // };
+  address_book.prototype.delete = function (id) {
+    return $http.delete("/address_book/"+id+".json", {params : MyAddressBook.tokens.authenticityParams()})
+  };
   return address_book;
 });

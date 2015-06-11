@@ -21,6 +21,8 @@
 //= require angular-ui-bootstrap-tpls
 //= require nprogress
 //= require nprogress-angular
+//= require ./angular/directives/angular-animate
+//= require ./angular/directives/angular-sanitize
 //= require ./angular/main
 //= require ./angular/routes
 //= require_tree ./angular/services

@@ -11,7 +11,7 @@
 	  	</tr>
 	  </thead>
 	  <tbody>
-	  	<tr ng-show="no_data = false">
+	  	<tr ng-show="no_data">
 	  		<td colspan="5" class="no-data">No contacts found.</td>
 	  	</tr>
 	  	<tr class="new_contact" ng-show="showAdd">
@@ -21,7 +21,7 @@
 	  		<td><input type="text" class="form-control" placeholder="Contact no" aria-describedby="basic-addon1" ng-model="new_data.contact_number"></td>
 	  		<td><i class="fa fa-floppy-o link" ng-click="addData()"></i> |<i class="fa fa-times link" ng-click="cancelAdd()"></i></td>
 	  	</tr>
-	  	<tr ng-repeat="b in book | filter:searchText ">
+	  	<tr ng-repeat="b in book | filter:searchText " ng-animate="'animate'">
 	  	<td>{{ $index + 1 }}</td>
 	  	<td>
 	  		<span ng-hide="current_data[$index]">{{ b.contact.fullname }}</span>
@@ -38,7 +38,7 @@
 	  	<td>
 	  		<i ng-show="edit[$index]" class="fa fa-floppy-o link " ng-click="updateData(b.id,$index)"></i>
 	  		<i ng-hide="current_data[$index]" class="fa fa-pencil-square-o link" ng-click="editData($index)"></i> |
-	  		<i class="fa fa-trash-o link" ng-hide="current_data[$index]" ng-click="deleteData(b.id)"></i>
+	  		<i class="fa fa-trash-o link" ng-hide="current_data[$index]" ng-click="deleteData(b.id,$index)"></i>
 	  		<i ng-show="edit[$index]" class="fa fa-undo link" ng-click="defaultData(b.id,$index)"></i>
 	  	</td>
 	  	</tr>

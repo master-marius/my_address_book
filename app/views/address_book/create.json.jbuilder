@@ -1,1 +1,3 @@
-json.address_book @address_book
+
+	json.id @address_book.id
+	json.contact @contact

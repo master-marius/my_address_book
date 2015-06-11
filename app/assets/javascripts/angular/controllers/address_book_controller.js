@@ -1,4 +1,4 @@
-app.controller('addressBookController', function($rootScope, $scope, $document, addressBookServices, contactsServices) {
+app.controller('addressBookController', function($rootScope, $scope, $document,$window, addressBookServices, contactsServices) {
   $rootScope.header = "My Contacts";
   $rootScope.pageHeader = "My Contacts";
   $scope.book = [];
@@ -13,6 +13,11 @@ app.controller('addressBookController', function($rootScope, $scope, $document, 
 
   addressBookSvc.fetchAll().success(function(data, status, headers, config){
       $scope.book = data.address_book;
+      if ($scope.book.length <= 0){
+        $scope.no_data = true;
+      }else{
+        $scope.no_data = false;
+      }
   });
 
   $scope.showAddContact = function(){
@@ -54,6 +59,10 @@ app.controller('addressBookController', function($rootScope, $scope, $document, 
     }
     addressBookSvc.add(contact).success(function(data,status,headers,config){
       console.log(data);
+      $scope.cancelAdd();
+      
+      $scope.book.unshift(data);
+      console.log($scope.book);
     });
   }
 
@@ -66,6 +75,8 @@ app.controller('addressBookController', function($rootScope, $scope, $document, 
       if (data.success){
         updateSuccess(data.contact,index);
         $scope.defaultData(1,index);
+        $('.my-alert').removeClass('hide');
+        $('.my-alert').text(data.message);
       }else{
         updateError(data.message,index);
       }
@@ -113,29 +124,14 @@ app.controller('addressBookController', function($rootScope, $scope, $document, 
         } 
     });
   }
-  // itemSvc.add(new_item).success(function(data,status,headers, config){
-  //       if (data.success){
-  //         var ctr = 0;
-  //         var new_id = 0;
-  //         console.log(data);
-  //         $scope.items.forEach(function(item){
-  //           if (ctr == 0){
-  //             new_id = item.id;
-  //             ctr++;
-  //             return false;
-  //           }
-  //         });
-  //         $scope.registerData(data,new_item);
+  $scope.deleteData = function(id,index){
+    var deleteContact = $window.confirm('delete this contact?');
 
-  //         new_item.id = new_id + 1;
-  //         $scope.items.push(new_item);
-
-  //         $scope.items.sort(function(a, b){
-  //           return b.id - a.id;
-  //         });
-
-  //         $scope.add = false;
-  //         $scope.new_item = '';
-  //       }
-  //     });
+    if (deleteContact){
+       addressBookSvc.delete(id).success(function(data){
+        console.log(data);
+        $scope.book.splice(index,1);
+      });
+    }
+  }
 });
