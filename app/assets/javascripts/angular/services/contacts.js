@@ -21,9 +21,9 @@ app.factory("contactsServices", function($resource ,$http) {
   //   return $http.post("/users.json", angular.extend(param, Inventory.tokens.authenticityParams()));
   // };
 
-  // user.prototype.update = function (id, param) {
-  //   return $http.put("/users/"+id+".json", angular.extend({user: param}, Inventory.tokens.authenticityParams()));
-  // };
+  contact.prototype.update = function (id, param) {
+    return $http.put("/contacts/"+id+".json", angular.extend({contact: param}, MyAddressBook.tokens.authenticityParams()));
+  };
 
   // user.prototype.delete = function (id) {
   //   return $http.delete("/users/"+id+".json", {params : Inventory.tokens.authenticityParams()})

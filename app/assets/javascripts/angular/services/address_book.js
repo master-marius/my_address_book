@@ -18,7 +18,11 @@ app.factory("addressBookServices", function($resource ,$http) {
   // };
 
   address_book.prototype.add = function (param) {
-    return $http.post("/" + this.resource + ".json", angular.extend(param, Inventory.tokens.authenticityParams()));
+    return $http.post("/" + this.resource + ".json", angular.extend(param, MyAddressBook.tokens.authenticityParams()));
+  };
+
+  address_book.prototype.update = function (id, param) {
+    return $http.put("/address_book/"+id+".json", angular.extend({contact: param}, MyAddressBook.tokens.authenticityParams()));
   };
 
   // user.prototype.update = function (id, param) {
