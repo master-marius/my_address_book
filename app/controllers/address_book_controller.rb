@@ -6,18 +6,28 @@ class AddressBookController < AuthenticatedController
   end
 
   def create
-  	@contact = AddressBook.create_contacts(contact_params)
-  		book = {
-  			:user_id => current_user.id, :contact_id => @contact.id
-  		}
-  	@address_book = AddressBook.create!(book)
-    contact_id = @address_book.contact_id
-    @contact = Contact.find_by_id(contact_id)
+  	result = AddressBook.create_contacts(contact_params)
+  
+    if result[:success] 
+      book = {
+      :user_id => current_user.id, :contact_id => result[:contact].try(:id)
+      }
+      begin
+        @address_book = AddressBook.create!(book)
+        @contact = result[:contact]
+      rescue ActiveRecord::RecordInvalid => invalid
+        @error = true
+        @message = invalid.record.errors
+      end
+    else
+      @error = true
+      @message = result[:message]
+    end
+
   end
 
   def update
     @contact = Contact.find_by_id(contact_params[:id])
-    binding.pry
     @contact.update_attributes(contact_params)  
   end
 

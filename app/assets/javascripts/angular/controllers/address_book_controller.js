@@ -58,11 +58,16 @@ app.controller('addressBookController', function($rootScope, $scope, $document,$
       contact : $scope.new_data
     }
     addressBookSvc.add(contact).success(function(data,status,headers,config){
-      console.log(data);
-      $scope.cancelAdd();
-      
-      $scope.book.unshift(data);
-      console.log($scope.book);
+      if (data.success){
+        $scope.cancelAdd();
+        $scope.book.unshift(data);
+        console.log($scope.book);
+        $('.my-alert').removeClass('hide');
+        $('.my-alert').text(data.message);
+        $scope.new_data = {};
+      }else{
+        createError(data.message);
+      }
     });
   }
 
@@ -84,6 +89,13 @@ app.controller('addressBookController', function($rootScope, $scope, $document,$
     });
   }
 
+  createError = function(message){
+    angular.forEach(message, function(msg, key) {
+          var el = $('[ng-model="new_data.'+key+'"]');
+          elementTooltip(el,msg);
+    });
+  }
+
   updateError = function(message,index){
     angular.forEach(message, function(msg, key) {
         
@@ -92,8 +104,7 @@ app.controller('addressBookController', function($rootScope, $scope, $document,$
 
         for (var property in $scope.edit_data[index].contact) {
           if (property == key ){
-            console.log(key+' = '+msg);
-            // var myEl = angular.element($document[0].querySelector('#'+property));            
+            console.log(key+' = '+msg);          
             var el = $('[ng-model="edit_data[$index].contact.'+property+'"]');
             elementTooltip(el,msg);
           }
@@ -133,5 +144,24 @@ app.controller('addressBookController', function($rootScope, $scope, $document,$
         $scope.book.splice(index,1);
       });
     }
+  }
+
+
+  $scope.hoverOption = function(bol,e,title){
+    var el = $(e.target);
+    if(bol){
+      el.addClass('my-hover');
+      hoverToolTip(el,title)
+
+    }else{
+      el.removeClass('my-hover');
+    }
+  }
+
+   hoverToolTip = function(element,msg){
+    element.attr('data-toggle','tooltip');
+    element.attr('data-placement','top');
+    element.attr('data-original-title',msg);
+    element.tooltip('show');
   }
 });

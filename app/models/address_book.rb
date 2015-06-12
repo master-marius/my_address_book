@@ -16,9 +16,22 @@ class AddressBook < ActiveRecord::Base
   # ------------------------------------------
   class << self
   	def create_contacts(contact_params)
-  		self.transaction do 
-  			contact = Contact.create!(contact_params)
-  		end
+      fullname = contact_params[:fullname]
+      contact = Contact.find_by_fullname(fullname)
+      # binding.pry
+      if contact.nil?
+        begin
+          create = Contact.create!(contact_params)
+          result = { :success => true, :contact => create}
+          return result
+        rescue ActiveRecord::RecordInvalid => invalid
+          result = { :success => false, :message => invalid.record.errors}
+          return result
+        end
+      else
+          error = {:fullname => ["has already been taken"] }
+          result = { :success => false, :message => error}
+      end		
   	end
   end
 end
